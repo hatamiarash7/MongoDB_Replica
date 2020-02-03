@@ -1,0 +1,60 @@
+version: "3.7"
+
+services:
+  mongo1:
+    image: mongo:4.2.0
+    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 3
+    environment:
+      TERM: xterm
+    volumes:
+      - mongo-data-1:/data/db
+      - mongo-config-1:/data/configdb
+    networks:
+      - mongo
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.replica == 1
+  mongo2:
+    image: mongo:4.2.0
+    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 3
+    environment:
+      TERM: xterm
+    volumes:
+      - mongo-data-2:/data/db
+      - mongo-config-2:/data/configdb
+    networks:
+      - mongo
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.replica == 2
+
+  mongo3:
+    image: mongo:4.2.0
+    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 3
+    environment:
+      TERM: xterm
+    volumes:
+      - mongo-data-3:/data/db
+      - mongo-config-3:/data/configdb
+    networks:
+      - mongo
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.replica == 3
+
+networks:
+  mongo:
+
+volumes:
+  mongo-data-1:
+  mongo-data-2:
+  mongo-data-3:
+  mongo-config-1:
+  mongo-config-2:
+  mongo-config-3:
