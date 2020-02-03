@@ -3,7 +3,7 @@ version: "3.7"
 services:
   mongo1:
     image: mongo:4.2.0
-    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 3
+    command: mongod --replSet rs1 --noauth --oplogSize 3
     environment:
       TERM: xterm
     volumes:
@@ -18,7 +18,7 @@ services:
           - node.labels.replica == 1
   mongo2:
     image: mongo:4.2.0
-    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 3
+    command: mongod --replSet rs1 --noauth --oplogSize 3
     environment:
       TERM: xterm
     volumes:
@@ -34,7 +34,7 @@ services:
 
   mongo3:
     image: mongo:4.2.0
-    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 3
+    command: mongod --replSet rs1 --noauth --oplogSize 3
     environment:
       TERM: xterm
     volumes:
