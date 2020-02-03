@@ -44,9 +44,9 @@ And, you should login *Manager node* and run the under command :
     ./initiate.sh
 
     # // if publish port was set before, need to remove first and update it.
-    # docker service update --publish-rm 27017:27017 overlay_mongo1
+    # docker service update --publish-rm 27017:27017 mongo_replica_mongo1
 
-    docker service update --publish-add 27017:27017 overlay_mongo1
+    docker service update --publish-add 27017:27017 mongo_replica_mongo1
 
 ## Persistent storage
 
@@ -57,7 +57,7 @@ Data is stored at `Docker Swarm Volume`, if you want to check the `Mountpoint` o
 Data will be persistent between service runs. To remove docker stack and all data. Run the following command:
 
     docker stack rm overlay
-    docker volume rm $(docker volume ls -qf label=com.docker.stack.namespace=overlay)
+    docker volume rm $(docker volume ls -qf label=com.docker.stack.namespace=mongo_replica)
 
 Leave smarm mode
 
