@@ -63,6 +63,12 @@ Leave smarm mode
 
     docker swarm leave
 
+## Run example project
+
+Let's run Koalab :
+
+    docker service create --env 'MONGO_URL=mongodb://mongo1:27017,mongo2:27017,mongo3:27017/koalab?replicaSet=rs1' --name koalab --network mongo --replicas 2 --publish 8080:8080 kalahari/koalab
+
 ## Reference
 
 - [Docker Swarm Document](https://docs.docker.com/engine/reference/commandline/swarm_init)
